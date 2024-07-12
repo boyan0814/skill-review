@@ -1,0 +1,15 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Hello Security!</title>
+</head>
+<body>
+<h1>Hello Security</h1>
+<!--動態:會自動做相對路徑處理-->
+<!--http://localhost:8080/demo/?continue -> http://localhost:8080/demo/logout-->
+<a th:href="@{/logout}">Log Out 1</a>
+
+<!--非動態:不會做相對路徑處理-->
+<!--http://localhost:8080/demo/?continue -> http://localhost:8080/logout-->
+<a href="/logout">Log Out 2</a>
+</body>
+</html>
