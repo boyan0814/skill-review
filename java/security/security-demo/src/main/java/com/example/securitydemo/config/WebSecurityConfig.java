@@ -1,6 +1,7 @@
 package com.example.securitydemo.config;
 
 import org.springframework.context.annotation.*;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration //配置類
+@EnableMethodSecurity
 //@EnableWebSecurity //開啟spring security的自定義配置(可省略)
 public class WebSecurityConfig {
 
@@ -36,7 +38,11 @@ public class WebSecurityConfig {
     @Bean //默認過濾器鏈
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //開啟授權保護
-        http.authorizeHttpRequests(authorize -> authorize
+        http.authorizeHttpRequests(
+                authorize -> authorize
+//                        .requestMatchers("/user/list").hasAuthority("USER_LIST")
+//                        .requestMatchers("/user/add").hasAuthority("USER_ADD")
+//                        .requestMatchers("/user/**").hasRole("ADMIN")
                         .anyRequest() //對所有請求開啟授權保護
                         .authenticated() //已認證請求自動授權
                 )
@@ -52,8 +58,15 @@ public class WebSecurityConfig {
         // .httpBasic(withDefaults()); //使用基本授權方式
 
         http.logout(logout -> logout.logoutSuccessHandler(new MyLogoutSuccessHandler())); //登出處裡
-        http.exceptionHandling(exception -> exception.authenticationEntryPoint(new MyAuthenticationEntryPoint())); //請求未認證處理
+        http.exceptionHandling(exception -> {
+                exception.authenticationEntryPoint(new MyAuthenticationEntryPoint());
+                exception.accessDeniedHandler(new MyAccessDeniedHandler());
+            }
+        ); //請求未認證處理
 
+        http.sessionManagement(session -> session.maximumSessions(1).expiredSessionStrategy(new MySessionInformationExpiredStrategy()));
+
+        http.cors(withDefaults()); //跨域
         http.csrf(csrf -> csrf.disable()); //要測swagger，先關掉
         return http.build();
     }
