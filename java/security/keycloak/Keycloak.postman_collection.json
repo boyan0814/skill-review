@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "30f61f94-842c-48ff-91d2-55d31b35b8a7",
+		"name": "Keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18531289"
+	},
+	"item": [
+		{
+			"name": "GET Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "boyen-rest-api",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "boyen",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/Boyen/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"Boyen",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET HELLO",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJIbzdmNlpKTnBUdGd2bzZRVzZYQTRtRF9JSXBDbFdBOXduNXgxY0JZc3NRIn0.eyJleHAiOjE3MjEyMDMyMDYsImlhdCI6MTcyMTIwMjkwNiwianRpIjoiYmZjMDFkNGEtY2U1YS00NWU4LWE4M2YtZjY5NzVhZDVkNzYzIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9Cb3llbiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzNWUxYTUxMy1jZTI3LTQ3YTYtOTg5Yy00ZDk0ZDdlYzBhNDYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJib3llbi1yZXN0LWFwaSIsInNpZCI6IjM3NTRmM2Q1LWJiMGEtNDI2MS1hN2Q5LTA0ZmU5NWIwMTc4NSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1ib3llbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImJveWVuLXJlc3QtYXBpIjp7InJvbGVzIjpbImNsaWVudF9hZG1pbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImJveWVuIn0.khVPfaNjOfeeyJKZXta6r7skAWId9lzqHwRX600wwqJRpvwTtUeVsgd7tgVc5rGq8SQoGneBouIR3j49r6XtnfQqnTH0WET_yGmxwD5ra9hxhoNxMY-4LVjZsm5thtjWZqO2NU5LbUT-YBfOUJX6Ug8YOsB4cSUPSaKVk6UmjoM48aWn43NDxcwEg5-6UcHtiD2aKBXm7-Xtnp67BRTgjTVxfC4_YEiilI-ERYx3uZqZamYULA_NSPHDUzooOilE-q9aj3q6yhgI5CYPDcN6OvX7C_KoeEe_WYbKmRoIbsHdNRyD2jIxZbwYsKPFUXX2nGhXDNxPqzRLDPwBZOAPUA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/demo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"demo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET HELLO-2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJIbzdmNlpKTnBUdGd2bzZRVzZYQTRtRF9JSXBDbFdBOXduNXgxY0JZc3NRIn0.eyJleHAiOjE3MjEyMDc4ODcsImlhdCI6MTcyMTIwNzU4NywianRpIjoiZjFiZWYyZmEtYWNlMi00YTAwLWFkOGMtMjY0MDkwZjE4MzFjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9Cb3llbiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzNWUxYTUxMy1jZTI3LTQ3YTYtOTg5Yy00ZDk0ZDdlYzBhNDYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJib3llbi1yZXN0LWFwaSIsInNpZCI6ImNkYTE1ODZjLWUwNGUtNDBiZi1hZGFmLTc2ZjdhNmVjYzliMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJhZG1pbiIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1ib3llbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImJveWVuLXJlc3QtYXBpIjp7InJvbGVzIjpbImNsaWVudF9hZG1pbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImJveWVuIn0.j9zT7lRuCXIYvs0VA1hKDimLqGugdzzZxtQR2zvxtPIT2WPqHrZVmwOGkspBMpPlu4-Wxds91Vk-9dyvueDiJPCEmnbzse7afGDPxWDPY5R9vSE7XSROshvVhEQLth0n2INjAHGMwfSAJGI6e6psIZL-xu9pWmJFqKToQ5jFTzxjySfFESZklOuFsfnare_z4VTg6mLi7ZnXPjgJW96XLYtQfzfDNuvGHWJ-G_ID4nyKKvgB5D2iH5xjCpkZdhV1dlr2Fm_npyHHMb75KTZ9rsPyq_gD-l5_Zjqk8jPHxJOeDBWWUGOKKa9DU4vZS9wTzbDiVtddZ3yEpccjjNRWtw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/demo/hello-2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"demo",
+						"hello-2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
